@@ -2220,8 +2220,6 @@ img { max-width: 100%; }
 
 .well { background-color: #f6f7f8; border-radius: 10px; padding: 50px; }
 
-.panel-title { text-align: center; color: #616161; margin-bottom: 10px; }
-
 .legend { list-style-type: none; margin: 0; padding: 0; }
 
 .legend > li { line-height: inherit; }
