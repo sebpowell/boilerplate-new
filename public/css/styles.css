@@ -2434,7 +2434,7 @@ img { max-width: 100%; }
 
 body { background-color: #f4f5f7; }
 
-body { font-family: "Roboto"; font-weight: 300; color: #212121; }
+body { font-family: "Roboto", sans-serif; font-weight: 300; color: #212121; }
 
 iframe { vertical-align: middle; }
 
