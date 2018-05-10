@@ -1,0 +1,84 @@
+.toolbar {
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	// box-shadow: 0 0 10px rgba(00,00,00,0.10);
+	// height: 50px;
+	border-bottom: 1px solid colors("keylines", "light");
+	height: 65px;
+	left: 0;
+	padding: 0 sizes(3);
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	@include if-above("md") {
+		padding: 0 sizes(6);
+	}
+
+	.toolbar-logo-section {
+		padding-right: sizes(6);
+		border-right: 1px solid colors("keylines", "light");
+	}
+
+
+	.toolbar-input {
+		position: relative;
+		margin: 0 auto;
+		width: 1000px;
+
+		input {
+			padding-left: sizes(8);
+			height: 40px;
+		}
+
+	}
+
+	.toolbar-links {
+		display: flex;
+		align-items: center;
+	}
+
+
+	svg {
+		@include square(18px);
+		position: absolute;
+		left: sizes(2);
+		color: colors("greyscale", 800);
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.toolbar-add-content {
+		opacity: 0;
+		visibility: hidden;
+		box-shadow: 0 10px 10px rgba(00,00,00,0.05);
+		background-color: white;
+		border-top: 1px solid colors("keylines", "light");
+		position: fixed;
+		// height: 400px;
+		// padding: sizes(10);
+		left: 250px;
+		width: 400px;
+		top: 58px;	
+		z-index: 999;
+
+		&.is-open {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.toolbar-add-content-body {
+			padding: sizes(5);
+		}
+
+
+		.toolbar-add-content-footer {
+			padding: sizes(5);
+			border-top: 1px solid colors("keylines", "light");
+
+		}
+	}
+}

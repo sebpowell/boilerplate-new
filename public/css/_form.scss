@@ -1,0 +1,33 @@
+%input {
+	font-weight: 300;
+	width: 100%;
+	font-size: 15px;
+	font-family: $font;
+	padding-left: sizes(3);
+	line-height: 1;
+	
+	border-radius: 3px;
+	border: 1px solid colors("keylines", "dark");
+
+	&:focus {
+		border-color: blue;
+	}
+
+	@include placeholder() {
+		color: colors("greyscale", 400);
+	}
+}
+
+
+input, textarea {
+	@extend %input;
+}
+
+textarea {
+	resize: none;
+}
+
+input {
+	height: 45px;
+	padding-bottom: 2px;
+}

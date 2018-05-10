@@ -1,35 +1,37 @@
 extends _layout
 
 block body
+
+	.category-header
+		.container
+			h1 Design
+			p The best design links.
+
+			.button.button-empty.button-small.position-relative.js-dropdown(data-dropdown="share-dropdown")
+				+icon({"name": "plus"})
+				| Public
+				ul.dropdown-menu(id="share-dropdown")
+					| Share
+
+
+			.max-width-600
+				ul.tags
+					each c in categories
+						li= "#"+c.name
+
 	.page-content
 		.container
-			h2 Latest saves
 			.links-list.links-list-table-large
 				each l in links
 					a.links-list-item(href="#{l.url}" target="_blank")
-						
 						.inner
 							.links-list-item-edit-icon
 								+icon({"name": "dots", "size": 15})
 							.links-list-item-photo(style="background-image: url('#{l.image}')")
-							.content
+							.links-list-item-content
 								.links-list-item-title= l.title
 								.links-list-item-date= moment(l.created_at).format("Do MMMM")
 
 								ul.tags
 									li.purple #Design
 									li.blue #CSS
-
-
-
-			//- .links-list
-			//- 	each l in links
-			//- 		.links-list-item
-			//- 			.links-list-item-photo(style="background-image: url('#{l.image}')")
-			//- 			.content
-			//- 				.links-list-item-title= l.title
-			//- 				.links-list-item-date= moment(l.created_at).format("Do MMMM")
-
-			//- 				ul.tags
-			//- 					li.purple #Design
-			//- 					li.blue #CSS

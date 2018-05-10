@@ -1,0 +1,28 @@
+.category-header {
+	padding: sizes(5) sizes(3);
+	border-bottom: 1px solid colors("keylines", "light");
+	background: white;
+	// border-radius: 5px;
+	// margin-left: -40px;
+	
+	// margin-bottom: sizes(8);
+
+
+	@include if-above("md") {
+		padding: 50px sizes(3);
+	}
+
+	h1 {
+		font-size: 35px;
+		margin-bottom: sizes(3);
+
+		@include if-above("md") {
+			font-size: 45px;
+		}
+	}
+
+	.category-description {
+		font-size: 18px;
+		margin-bottom: sizes(4);
+	}
+}

@@ -2,8 +2,155 @@ include _blocks
 include _head
 
 block navigation
+	include _new-tag-modal
+	.modal-container(id="new-category")
+		.modal
+			.modal-header 
+				h1.modal-title Create new collection
+				.modal-close
+					+icon({"name": "close"})
+			.modal-section.border-bottom-light
+				.well Collections allow you to group tags together in a meaningful way. For example, you might wany to create a collection about Philoshopy, which will include tags about various currents of thought. 
+				input(type="text" placeholder="Collection name")
+
+				textarea(rows="5" placeholder="Description")
+
+			.modal-section.border-bottom
+
+				h3 Header image
+
+				.upload-image
+
+
+
+			.modal-section.background-greyscale-50
+
+				h3 Choose tags to include
+
+				ul.categories-list
+					each c in categories
+						li= "#"+c.name
+
+
+				label Status
+
+				.checkbox Private
+
+			.modal-footer
+				.button.button-primary Create category
+
+	.toolbar
+		.toolbar-links.js-sidebar-mobile-toggle
+			.logo B
+		.toolbar-input
+			input.js-add-link(type="text" placeholder="Save a link for later")
+
+			+icon({"name": "plus"})
+
+		.toolbar-links
+
+			.toolbar-link.is-hidden-below-md
+				a(href="") Suggest a feature
+			.toolbar-lin.position-relative
+				.user-avatar.js-dropdown(data-dropdown="user-dropdown")
+
+				ul.dropdown-menu(id="user-dropdown")
+
+					.text-center.padding-6
+						.user-avatar
+						| sebastienpowell@gmail.com
+					ul.dropdown-menu-section
+						li 
+							a(href="/public.html") Public profile
+						li
+							a(href="") Settings
+					ul.dropdown-menu-section.border-top-light
+						li
+							a(href="") Logout
+
+		.toolbar-add-content
+			.toolbar-add-content-body
+				label.form-label Name
+				input.border-input(type="text" placeholder="Title")
+				label.form-label
+				input(type="text" placeholder="Add tags")
+
+				.image-selector
+
+			label.form-label Description
+			textarea(rows="6")
+
+			.toolbar-add-content-footer
+				.button.button-primary.button-block Save
+
+	.navigation
+		.navigation-section.border-bottom-light
+			ul.navigation-links.navigation-primary-links
+				li
+					+icon({"name": "home"}) 
+					a(href="") Dashboard
+				li
+					+icon({"name": "home"}) 
+					a(href="") All
+				li
+					+icon({"name": "home"}) 
+					a(href="") Uncategorised
+
+		.navigation-section.border-bottom-light
+			.navigation-section-title 
+				| Collections
+				.navigation-section-add(data-modal="new-category")
+					+icon({"name": "plus"}) 
+		
+			ul.navigation-categories.navigation-links
+				each c, i in categories
+					li.js-parent
+						a(href="#")= c.name
+						.navigation-category-count= c.id
+
+					ul.navigation-sub-categories.js-child
+						each t in categories
+							if t.parent_id == c.id
+								li= t.name
+
+		.navigation-section
+			.navigation-section-title 
+				| Tags
+				.navigation-section-add(data-modal="new-tag")
+					+icon({"name": "plus"}) 
+		
+			ul.navigation-categories.navigation-links
+				each t in categories
+					li
+						.navigation-category-shared
+						a(href="/category.html")= "#"+t.name
+						.navigation-category-shared
+							+icon({"name": "people"}) 
+						.navigation-category-count= t.id
+
 
 body
+	script.
+		$(document).ready(function() {
+			$(".dropdown").dropdown();
+			$(".modal-container").modal();
+
+			$(".js-add-link").on("keydown", function() {
+				$(".toolbar-add-content").addClass("is-open");
+			});
+
+			$(".js-sidebar-mobile-toggle").on("click", function() {
+
+				$(".backdrop").addClass("is-open");
+				$(".navigation").toggleClass("is-open");
+			});
+
+			$(".js-parent").on("click", function() {
+				$(this).next(".js-child").slideToggle();
+				//- $(".js-child").slideToggle();
+			});
+		});
+
 	include _icons.html
 	block body
 

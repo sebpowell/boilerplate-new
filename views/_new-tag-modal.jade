@@ -1,0 +1,14 @@
+.modal-container(id="new-tag")
+	.modal
+		.modal-header 
+			h1.modal-title Create new tag
+			.modal-close
+				+icon({"name": "close"})
+		
+		.modal-section.border-bottom-light
+			.well Collections allow you to group tags together in a meaningful way. For example, you might wany to create a collection about Philoshopy, which will include tags about various currents of thought. 
+
+			input(type="text" placeholder="Tag name (e.g. UX, Vegan Recipes...)")
+
+		.modal-footer
+			.button.button-primary Create category

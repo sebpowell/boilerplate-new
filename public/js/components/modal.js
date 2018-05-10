@@ -1,26 +1,39 @@
-$(document).ready(function() {
-	$("[data-modal]").on('click', function(e) {
-		e.preventDefault();
-		var target = $(this).data('modal');
-		$("#"+target).addClass("is-open");
-		$("body").addClass("overflow-hidden");
-	});
+(function($) { 
+	$.fn.modal = function(options, val) {
 
-	function closeModal() {
-		$(".modal-container").removeClass("is-open");
-		$("body").removeClass("overflow-hidden");
-	}
+		var that = this;
 
-	$(".new-modal-close").on('click', function() {
-		closeModal();
-	});
+		var settings = $.extend({
+			open: 'is-open',
+		}, options);
 
-	$(".modal").on('click', function(e) {
-		e.stopPropagation();
-	});
+		$("[data-modal]").on('click', function(e) {
+			
+			e.preventDefault();
+			
+			var target = $(this).data('modal');
+			
+			$("#"+target).addClass("is-open");
+			
+			$("body").addClass("overflow-hidden");
+		});
 
-	$(".modal-container").on('click', function() {
-		$(".modal-container").removeClass("is-open");
-		$("body").removeClass("overflow-hidden");
-	});
-});
+		function closeModal() {
+			that.removeClass("is-open");
+			$("body").removeClass("overflow-hidden");
+		}
+
+		$(".modal-close").on('click', function() {
+			closeModal();
+		});
+
+		$(".modal").on('click', function(e) {
+			e.stopPropagation();
+		});
+
+		that.on('click', function() {
+			$(".modal-container").removeClass("is-open");
+			$("body").removeClass("overflow-hidden");
+		});
+	};
+})(jQuery);

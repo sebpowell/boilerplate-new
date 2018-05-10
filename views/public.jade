@@ -1,0 +1,50 @@
+extends _public
+
+block body
+
+	.page-content
+		.container
+			.category-header
+				.inner.border-bottom-light.background-greyscale-50
+					.user-details
+						.user-avatar
+						.flex-1
+							h3 Sebastien Powell
+							p.user-bio Product designer, entrepreneur. Co-founder @ http://getagent.co.uk and http://jamlondon.io.
+
+							a See all collections
+
+				.inner
+					h1 Design
+					p.category-description The best design links.
+
+
+					.max-width-600
+						ul.tags
+							each c in categories
+								li= "#"+c.name
+
+			.tabs
+				.tabs-navigation
+					a All links
+					a Tags
+
+					a Filter by
+
+			ul.list-toggle
+				li Thumb
+				li List
+			
+			.links-list.links-list-table-large
+				each l in links
+					a.links-list-item(href="#{l.url}" target="_blank")
+						+icon({"name": "dots", "size": 15, "class": "panel-edit-icon"})
+						.inner
+							.links-list-item-photo(style="background-image: url('#{l.image}')")
+							.content
+								.links-list-item-title= l.title
+								.links-list-item-date= moment(l.created_at).format("Do MMMM")
+
+								ul.tags
+									li.purple #Design
+									li.blue #CSS

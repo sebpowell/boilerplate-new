@@ -1,0 +1,118 @@
+.links-list {
+	
+	@include clearfix();
+	display: flex;
+	flex-wrap: wrap;
+
+	@include if-above("md") {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+
+	.inner {
+		position: relative;
+	}
+
+	.links-list-item-edit-icon {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		background-color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@include circle(30px);
+	}
+
+	&.links-list-table-large {
+		border: 1px solid colors("keylines", "light");
+		border-radius: 3px;
+		background-color: white;
+
+		margin-left: 0;
+		margin-right: 0;
+
+		.links-list-item {
+			width: 100%;
+			padding: sizes(3);
+
+			&:not(:last-of-type) {
+				border-bottom: 1px solid colors("keylines", "light");
+			}
+
+			.inner {
+				display: flex;
+			}
+		}
+
+		.links-list-item-photo {
+			@include square(50px !important);
+			margin-bottom: 0 !important;
+			margin-right: sizes(4);
+			// flex: 1;
+		}
+	}
+
+	&.links-list-cards {
+		.links-list-item {
+
+			width: 100%;
+
+			@include if-above("md") {
+				padding: 0 10px;
+				width: 25%;
+				display: flex;
+				margin-bottom: sizes(4);
+			}
+
+			.inner {
+				background-color: white;
+				width: 100%;
+				border-radius: 3px;
+				box-shadow: 0 0 10px rgba(00,00,00,0.1);
+				cursor: pointer;
+				align-items: center;
+				transition: all .25s;
+			}
+
+			&:hover {
+				.inner {
+					box-shadow: 0 0 20px rgba(00,00,00,0.1);
+				}
+			}
+		}
+	}
+
+	.links-list-item {
+
+		.links-list-item-photo {
+			@include background-image();
+			// @include square(100px);
+			box-shadow: 0 0 1px rgba(00,00,00,0.2) inset;
+			height: 200px;
+			border-radius: 3px 3px 0 0;
+			width: 100%;
+			background-color: grey;
+		}
+
+		.links-list-item-date {
+			font-size: 13px;
+			color: #959595;
+			margin-bottom: sizes(2);
+		}
+
+		.links-list-item-title {
+			font-size: 18px;
+			line-height: 1.4;
+			margin-bottom: sizes(1);
+
+			@include ellipsis(3);
+
+			&:hover {
+				text-decoration: underline;
+				text-underline-position: under;
+			}
+		}
+	}
+}

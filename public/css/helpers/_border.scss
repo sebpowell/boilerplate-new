@@ -1,0 +1,42 @@
+$border-sides: top, right, bottom, left;
+	
+@include helpers("no-border", "border: none !important");
+
+.no-border-last {
+	&:last-of-type {
+		border: none !important;
+	}
+}
+
+.no-border {
+	border: 0 !important;
+}
+
+@if map-has-key($colors, keylines) {	
+	@if type-of( map-get($colors, keylines) ) == "map" {
+		@each $color, $value in map-get($colors, keylines) {
+			@include helpers("border-#{$color}", "border: 1px solid #{$value}");
+			@each $side in $border-sides {
+				@include helpers("border-#{$side}-#{$color}", "border-#{$side}: 1px solid #{$value}");
+			}
+		}
+	}
+
+	@else {
+		$value: map-get($colors, keylines);
+		@include helpers("border", "border: 1px solid #{$value}");
+		@each $side in $border-sides {
+			@include helpers("border-#{$side}", "border-#{$side}: 1px solid #{$value}");
+		}
+	}
+
+	@each $side in $border-sides {
+		@include helpers("no-border-#{$side}", "border-#{$side}: none !important");
+
+		.no-border-#{$side}-last {
+			&:last-of-type {
+				border-#{$side}: none !important;
+			}
+		}
+	}
+}

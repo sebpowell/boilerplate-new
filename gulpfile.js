@@ -4,11 +4,11 @@
 
 var gulp = require("gulp"),
 	autoprefixer = require("gulp-autoprefixer"),
-	concat = require("gulp-concat"),
 	jade = require('gulp-jade'),
 	sass = require("gulp-sass"),
-	fs = require('fs');
-	uglify = require("gulp-uglify");
+	concat = require("gulp-concat"),
+	fs = require('fs'),
+	uglify = require("gulp-uglify"),
 	cleanCSS = require('gulp-clean-css');
 
 /////////////////////////////////////////////////////
@@ -20,15 +20,12 @@ gulp.task("jade", function() {
 	.pipe(jade({
 		pretty: true,
 		locals: {
-			attendees: JSON.parse( fs.readFileSync('./views/attendees.json') ),
-			tweets: JSON.parse( fs.readFileSync('./views/tweets.json') ),
-			extras: JSON.parse( fs.readFileSync('./views/extras.json') ),
-			sponsors: JSON.parse( fs.readFileSync('./views/sponsors.json') ),
-			companies: JSON.parse( fs.readFileSync('./views/companies.json') ),
-			videos: JSON.parse( fs.readFileSync('./views/videos.json') ),
+			moment: require("moment"),
+			categories: JSON.parse( fs.readFileSync('./views/_categories.json') ),
+			links: JSON.parse( fs.readFileSync('./views/_links.json') ),
 		}
 	}))
-	.pipe(gulp.dest("./jamlondon"));
+	.pipe(gulp.dest("./"));
 });
 
 /////////////////////////////////////////////////////

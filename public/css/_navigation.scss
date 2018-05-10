@@ -1,77 +1,162 @@
 .navigation {
-	position: fixed;
-	background-color: white;
-	z-index: 5;
-	top: 0;
+
+	transform: translateX(-100%);
+	transition: all .45s;
 	width: 100%;
-	box-shadow: 0 1px 5px rgba(00,00,00,0.1);
 
-	text-align: center;
+	@include if-above("md") {
+		transform: translateX(0);
+		width: 250px;
+	}
 
-	transform: translateY(-100px);
-	transition: all .25s;
-	overflow-y: scroll;
+	&.is-open {
+		transform: translateX(0);
+	}
+
+
+	background-color: white;
+	left: 0;
+	position: fixed;
+	top: 60px;
 	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	overflow: scroll;
+	z-index: 2;
+	border-right: 1px solid colors("keylines", "light");
 
-	&.is-visible {
-		transform: translateY(0);
+	.navigation-link {
+		padding: sizes(3);
 	}
 
-	.navigation-container {
-		max-width: 1200px;
-		width: 100%;
-		margin: 0 auto;
-		display: flex;
-		padding: 0 sizes(3);
-		align-items: center;
-	}
+	.navigation-section {
+		padding: sizes(5);
 
-	.navigation-links {
-		display: flex;
-
-		a {
+		.navigation-section-title {
 			@include uppercase(0.1em);
-			font-size: 13px;
-			display: inline-block;
-			white-space: nowrap;
-			padding: sizes(4) sizes(5);
-			color: colors("greyscale", 700);
-			position: relative;
+			font-size: 12px;
+			font-weight: 600;
+			display: flex;
+			color: #3c4857;
+			align-items: center;
+			margin-bottom: sizes(2);
 
-			&:hover {
-				color: colors("greyscale", 900);
-			}
+			.navigation-section-add {
 
-			&.is-active {
-				color: colors("brand");
-				font-weight: bold;
-				&:after {
-					content: "";
-					background-color: colors("brand");
-					width: 100%;
-					height: 1px;
-					left: 0;
-					position: absolute;
-					bottom: 0;
+				padding: 3px;
+				display: inline-block;
+				position: relative;
+				right: -8px;
+				border-radius: 3px;
+				margin-left: auto;
+				cursor: pointer;
+				// background-color: colors("greyscale", 100);
+				border: 1px solid colors("keylines", "light");
+
+
+				svg {
+					@include square(15px);
+				}
+
+				&:hover {
+					background-color: colors("primary");
+					color: white;
 				}
 			}
 		}
 	}
 
-	.navigation-cta {
+	.navigation-primary-links {
+
+	}
+
+
+	.navigation-links {
+		@include no-bullet;
+		// border-bottom: 1px solid colors("keylines", "light");
+		// margin-bottom: sizes(2);
+
+		li {
+			font-size: 16px;
+			// opacity: 0.7;
+			border-radius: 3px;
+
+			&:hover {
+				color: colors("primary");
+			}
+			
+			&:not(:last-of-type) {
+				margin-bottom: sizes(3);
+			}
+
+			svg {
+				@include square(14px);
+				position: relative;
+				// top: -1px;
+				margin-right: sizes(1);
+			}
+		}
+	}
+
+	.navigation-category-arrow {
+		@include square(15px);
 		margin-left: auto;
 	}
 
-	.logo {
-		@include circle(60px);
-		background-color: white;
-		box-shadow: 0 1px 1px rgba(00,00,00,0.15);
-		background-image: url("/public/img/logo.png");
-		background-size: 70%;
-		background-position: center;
-		background-repeat: no-repeat;
-		z-index: 2;
-		margin-right: sizes(5);
+
+	.navigation-categories {
+		@include no-bullet;
+		flex: 1;
+		overflow: scroll;
+		// border-bottom: 1px solid colors("keylines", "light");
+		// padding: 0 sizes(6);
+
+
+		li {
+			font-size: 14px;
+			display: flex;
+			align-items: center;
+			// flex-direction: column;
+			// padding: 8px 0;
+			// opacity: 0.7;
+
+			.icon {
+				@include square(15px);
+				position: relative;
+				top: -1px;
+				margin-right: sizes(1);
+			}
+
+			&:hover {
+				cursor: pointer;
+				opacity: 1;
+			}
+
+			&.is-open {
+
+				color: colors("primary");
+
+				& + .navigation-sub-categories {
+					display: block;
+				}
+				
+			}
+		}
 	}
 
+	.navigation-category-count {
+		// float: right;
+		color: grey;
+		font-size: 11px;
+		margin-left: auto;
+	}
+
+	.navigation-sub-categories {
+		@include no-bullet;
+		display: none;
+
+		li {
+			padding-left: sizes(9);
+		}
+	}
 }

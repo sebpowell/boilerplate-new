@@ -1,0 +1,78 @@
+[
+  {
+    "id": 11,
+    "name": "Branding & Identity",
+    "parent_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Business",
+    "parent_id": "NULL"
+  },
+  {
+    "id": 10,
+    "name": "CSS",
+    "parent_id": 7
+  },
+  {
+    "id": 1,
+    "name": "Design",
+    "parent_id": "NULL"
+  },
+  {
+    "id": 4,
+    "name": "Data & Design",
+    "parent_id": 1
+  },
+  {
+    "id": 7,
+    "name": "Engineering",
+    "parent_id": "NULL"
+  },
+  {
+    "id": 6,
+    "name": "Product",
+    "parent_id": "NULL",
+    "shared": true
+  },
+  {
+    "id": 8,
+    "name": "Iconography",
+    "parent_id": 1
+  },
+  {
+    "id": 12,
+    "name": "Prototyping",
+    "parent_id": 1
+  },
+  {
+    "id": 13,
+    "name": "Sketch",
+    "parent_id": 1
+  },
+  {
+    "id": 15,
+    "name": "Typography",
+    "parent_id": 1
+  },
+  {
+    "id": 14,
+    "name": "Usability",
+    "parent_id": 6
+  },
+  {
+    "id": 16,
+    "name": "User Experience",
+    "parent_id": 1
+  },
+  {
+    "id": 18,
+    "name": "User Research",
+    "parent_id": 6
+  },
+  {
+    "id": 2,
+    "name": "UX",
+    "parent_id": 6
+  }
+]
